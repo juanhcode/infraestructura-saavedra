@@ -1,6 +1,6 @@
 services:
   frontend:
-    image: juanhoyos/saavedra:frontend-1.0.0
+    image: sebastian2313025/infraestructura-saavedra:frontend
     container_name: frontend
     ports:
       - "4200:4200"
@@ -12,7 +12,7 @@ services:
       - my-network
 
   backend:
-    image: juanhoyos/saavedra:backend-1.0.0
+    image: sebastian2313025/infraestructura-saavedra:backend
     container_name: backend
     ports:
       - "3000:3000"
