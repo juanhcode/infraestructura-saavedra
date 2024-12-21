@@ -1,0 +1,158 @@
+@media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 375px) {
+    .side-nav-bar {
+      width: 100%;
+    }
+  }
+  @media only screen and (min-width: 376px) {
+    .side-nav-bar {
+      width: 375px;
+    }
+  }
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+  .btn-side-nav {
+    opacity: 1;
+  }
+
+  .user-button {
+    background-size: cover;
+    image-rendering: auto;
+    margin: 0px 12px 1px;
+  }
+
+  button.cdk-focused {
+    outline: none;
+  }
+
+  .title {
+    font-size: 0.9em;
+  }
+
+  .subtitle {
+    font-size: 0.8em;
+  }
+
+  ::ng-deep .custom-class {
+    max-width: 350px !important;
+  }
+
+  .example-header-image {
+    background-size: cover;
+    image-rendering: auto;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+
+  .side-nav-bar {
+    display: none;
+  }
+  .btn-side-nav {
+    pointer-events: none;
+    opacity: 0;
+  }
+
+  .user-button {
+    background-size: cover;
+    margin: 0px 12px 1px;
+  }
+
+  button.cdk-focused {
+    outline: none;
+  }
+
+  .title {
+    font-size: 0.9em;
+  }
+
+  .subtitle {
+    font-size: 0.8em;
+  }
+
+  ::ng-deep .custom-class {
+    max-width: 350px !important;
+  }
+
+  .example-header-image {
+    background-size: cover;
+    image-rendering: auto;
+  }
+}
+
+::ng-deep .matMenu-order {
+  background-color: white !important;
+}
+
+::ng-deep .custom-class {
+  background-color: #f5e4d2 !important;
+  border-radius: 20px !important;
+}
+
+::ng-deep .menu-card {
+  border-radius: 20px !important;
+  background-color: white !important;
+  margin: 0px 8px 0px 8px;
+}
+
+.link-title {
+  text-decoration: none;
+  color: #424242;
+}
+.icon-title {
+  border: 1px solid;
+  font-size: 22px;
+  padding: 2px;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  line-height: 25px;
+  border-radius: 50%;
+}
+
+.total-btn {
+  pointer-events: none;
+}
+.sidenav {
+  background-color: #f5e4d2;
+}
+.text-order-menu {
+  color: #263238;
+  font-weight: 500px;
+}
+.title-side-nav {
+  color: white;
+}
+
+.side-nav-bar-toolbar {
+  border-bottom: 1px solid white;
+  background-color: rgb(145, 80, 64);
+}
+
+.side-nav-bar {
+  background-color: rgb(145, 80, 64);
+}
+
+.link_name {
+  color: white;
+}
+
+.relative {
+  flex: 1 0 auto;
+  padding-bottom: 64px;
+}
+.navBar {
+  max-height: 55px;
+  background-color: rgb(145, 80, 64);
+  color: white;
+}
+.side-nav {
+  background-color: #f5e4d2;
+}
+.content {
+  padding-top: 55px;
+}

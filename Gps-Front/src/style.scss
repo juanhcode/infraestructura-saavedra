@@ -1,0 +1,46 @@
+@use '@angular/material' as mat;
+
+
+
+$my-palette: mat.$indigo-palette; 
+
+
+.dense-1 {
+  @include mat.all-component-densities(-1);
+}
+
+.dense-2 {
+  @include mat.all-component-densities(-2);
+}
+
+.dense-3 {
+  @include mat.all-component-densities(-3);
+}
+
+
+
+$my-palette: mat.define-palette(mat.$indigo-palette);
+.my-custom-style {
+ background: mat.get-color-from-palette($my-palette, 500);
+ color: mat.get-color-from-palette($my-palette, '500-contrast');
+}
+
+
+
+@media (max-width: 600px) {
+  .stepper {
+    width: 100%;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 992px) {
+  .stepper {
+    width: 80%;
+  }
+}
+
+@media (min-width: 993px) {
+  .stepper {
+    width: 60%;
+  }
+}

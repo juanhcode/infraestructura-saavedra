@@ -1,0 +1,7 @@
+<app-sidebar (sideNavToggled)="sideNavStatus=$event"></app-sidebar>
+<div class="section" [ngClass]="{'section-open':sideNavStatus}">
+  <div class="section-body" [ngClass]="{'section-body-open':sideNavStatus}">
+    <app-nav class="nav" [showCard]="showCard" [currentUrl]="currentUrl" [titulo]="titulo" [iconTitle]="iconTitle"
+      ></app-nav>
+  </div>
+</div>

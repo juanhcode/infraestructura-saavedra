@@ -1,0 +1,37 @@
+.update{
+  background:#673AB7;
+  color:white;
+
+}
+.btn-image{
+  background:#7986CB;
+}
+
+.modal-image-header{
+  background:#7986CB;
+}
+.view{
+  background:#3F51B5;
+}
+
+img {
+  border-radius: 50%;
+  width: 80%;
+  height: auto;
+  image-rendering: auto;
+}
+.create{
+  background:#607D8B;
+}
+
+.navbar{
+  color:white;
+}
+
+.mat-dialog{
+  max-height:80vh;
+}
+
+.invalid-feedback{
+font-size:13px;
+}

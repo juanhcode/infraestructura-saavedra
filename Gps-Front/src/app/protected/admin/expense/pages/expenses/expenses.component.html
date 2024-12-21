@@ -1,0 +1,5 @@
+<app-crud (valueSearch)="onChangesSearchExpense($event)" [showSearchDate]="true" [showSearchFieldName]="false"
+  [dataTable]="dataSource" [propertyColumns]="propertyExpenses" [nameComponent]="'gasto'"
+  [headerColumnsName]="listHeaderTableExpenses">
+</app-crud>
+<router-outlet (activate)="onActive($event)"></router-outlet>

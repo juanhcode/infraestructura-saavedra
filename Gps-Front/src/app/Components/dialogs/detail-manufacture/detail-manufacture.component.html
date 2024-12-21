@@ -1,0 +1,138 @@
+<form class="form" [formGroup]="miFormulario" name="formProduct">
+  <p>
+    <mat-toolbar class="navbar navbar-expand-lg" [ngClass]="inputData.typeAction">
+      <div class="container-fluid">
+        <h1>{{inputData.title}}</h1>
+        <div class="d-flex">
+          <button (click)="close()" class="my-custom-style" mat-icon-button class="example-icon favorite-icon"
+            aria-label="Example icon-button with heart icon">
+            <mat-icon>close</mat-icon>
+          </button>
+        </div>
+      </div>
+    </mat-toolbar>
+  </p>
+  <mat-dialog-content class="mat-dialog">
+    <div class="container">
+      <div class="row">
+        <div *ngIf="expenseForm" class="col-md-12 mb-2">
+          <h3 class="mb-0"> Datos de los Gastos</h3>
+          <div class="card">
+            <div class="card-body">
+              <form [formGroup]="expenseFormGroup">
+                <div class="row" [formArrayName]="'formArrayExpense'">
+                  <div class="col-xs-10 col-sm-12 col-md-12 mb-2" *ngFor="let expense of expenses; let index=index">
+                    <div class="row" [formGroupName]="index">
+                      <div class="col-md-6">
+                        <label for="inputEmail3" class=" col-form-label col-form-label-sm">Nombre</label>
+                        <input type="text" class="form-control " formControlName="nameExpense" id="{{expense.name}}"
+                          value="{{expense.name}}">
+                      </div>
+                      <div class="col-md-6">
+                        <label for="inputEmail3" class=" col-form-label col-form-label-sm">Fecha</label>
+                        <input type="text" class="form-control" formControlName="dateExpense" id="{{expense.createdAt}}"
+                          value="{{expense.createdAt}}">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12 mb-2">
+          <h3 class="mb-0"> Datos del Producto</h3>
+          <div class="card">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-6 mb-2">
+                  <label for="inputEmail3" class=" col-form-label col-form-label-sm">Nombre</label>
+                  <input type="text" class="form-control form-control-sm" formControlName="nameProduct">
+                </div>
+                <div class="col-md-6 mb-2">
+                  <label for="inputEmail3" class="col-form-label col-form-label-sm">Categoria</label>
+                  <input type="text" class="form-control form-control-sm" formControlName="category">
+                </div>
+                <div *ngIf="showFieldButtonAmountManufacture" class="col-md-6 mb-2">
+                  <label for="inputEmail3" class="col-form-label col-form-label-sm">Cantidad utilizada </label>
+                  <input type="text" class="form-control form-control-sm" formControlName="amount"
+                    [class.is-invalid]="validateField.noValidField('amount',miFormulario)">
+                  <div class="invalid-feedback">{{ validateField.errorMsgField('amount','La
+                    cantidad',miFormulario)
+                    }}
+                  </div>
+                </div>
+                <div *ngIf="showFieldButtonAmountManufacture && inputData.typeAction==='update'"
+                  class="col-md-3 mb-2 d-flex align-items-end justify-content-start">
+                  <button mat-mini-fab matTooltip="Editar cantidad" (click)="updateAmountManufacture()"
+                    class="btn update" color="accent">
+                    <mat-icon>mode_edit</mat-icon>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="editAmountManufacture" class="col-md-12 mb-4">
+          <h3 class="mb-0"> Datos de los Gastos</h3>
+          <div class="card">
+            <div class="card-body">
+              <form [formGroup]="ProductManufactureFormGroup">
+                <div class="row" [formArrayName]="'formArrayproduct'">
+                  <div class="col-xs-10 col-sm-12 col-md-12 mb-2"
+                    *ngFor="let detailManufacture of details_Manufacture_production; let index=index">
+                    <div class="row" [formGroupName]="index">
+                      <div class="col-xs-10 col-sm-12 col-md-3 mb-2">
+                        <label for="inputEmail4" class="form-label">Nombre del Gasto</label>
+                        <input formControlName="nameExpense" type="text" class="form-control"
+                          id="{{detailManufacture.Expense?.name}}" value="{{detailManufacture.Expense?.name}}">
+                      </div>
+                      <div class="col-xs-10 col-sm-12 col-md-3 mb-2">
+                        <label for="inputEmail4" class="form-label">Nombre producto</label>
+                        <input formControlName="nameProduct" type="text" class="form-control"
+                          id="{{detailManufacture.Product?.name}}" value="{{detailManufacture.Product?.name}}">
+                      </div>
+                      <div class="col-xs-10 col-sm-12 col-md-3 mb-2">
+                        <label for="inputEmail4" class="form-label">Cantidad disponible</label>
+                        <input formControlName="amountAvalaible" type="text" class="form-control"
+                          id="{{detailManufacture.amountAvalaible}}" value="{{detailManufacture.amountAvalaible}}">
+                      </div>
+                      <div class="col-xs-10 col-sm-12 col-md-3 mb-2">
+                        <label for="inputEmail4" class="form-label">Cantidad </label>
+                        <input type="number"
+                          [class.is-invalid]="validateField.noValidField('amount',formGroupProductManufacture(index))"
+                          formControlName="amount" value="{{ detailManufacture.amount }}" class="form-control"
+                          id="{{ detailManufacture.amount }}" placeholder="ingrese la cantidad que desea utilizar">
+                        <div class="invalid-feedback">
+                          {{ validateField.errorMsgField('amount','La cantidad',formGroupProductManufacture(index))}}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12 mb-2 ">
+                    <div class="d-flex justify-content-center">
+                      <button mat-mini-fab color="accent" type="update" matTooltip="Actualizar cantidad" class="ms-2 me-2"
+                        (click)="saveAmountProduct()" [disabled]="this.ProductManufactureFormGroup.get('formArrayproduct')?.invalid">
+                        <mat-icon>check_circle_outline</mat-icon>
+                      </button>
+                      <button mat-mini-fab color="warn" class="ms-2 me-2"  matTooltip="Actualizar cantidad" type="button" (click)="cancel()">
+                        <mat-icon>highlight_off</mat-icon>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12 mt-3 d-flex justify-content-center ">
+        <button *ngIf="showButtonUpdate" mat-raised-button color="accent" type="button" (click)="save()" [disabled]="ProductManufactureFormGroup.invalid || miFormulario.invalid"
+          [ngClass]="inputData.typeAction" class="btn mx-3" >{{
+          inputData.typeAction | NameButton}} </button>
+        <button mat-raised-button color="warn" type="button" class="mx-3" (click)="close()">Cancelar</button>
+    </div>
+  </mat-dialog-content>
+
+</form>

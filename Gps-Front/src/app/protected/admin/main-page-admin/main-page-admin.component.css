@@ -1,0 +1,44 @@
+
+@media only screen and (min-width: 768px) {
+  .section{
+    position: relative;
+    min-height: 100vh;
+    top: 0;
+    left: 78px;
+    width:calc(100% - 78px);
+    transition: all .5s ease;
+    z-index: 2;
+  }
+  .section-open{
+    left:250px;
+    width:calc(100% - 250px)
+  }
+
+  .section-body{
+    display: inline-block;
+    width:100%;
+  }
+  .section-body-open{
+    display: inline-block;
+  }
+
+  h1{
+    color:black;
+  }
+
+  .link-title{
+    text-decoration:none;
+    color:#424242;
+  }
+
+  .icon-title{
+    border: 1px solid;
+   font-size: 22px;
+   padding: 2px;
+   width: 30px;
+   height: 30px;
+   text-align: center;
+   line-height: 25px;
+   border-radius: 50%;
+  }
+}

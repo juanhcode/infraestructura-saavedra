@@ -1,0 +1,49 @@
+<section class="col-xs-12 col-sm-12 col-md-12 d-flex  justify-content-center mt-0  mb-5 ">
+
+    <div class="col-xs-12 col-sm-12 col-md-6 p-4 d-inline align-items-center">
+      <img [src]="imagePrincipal" alt="" class="mb-3 px-4 img-product">
+        <div class="container">
+          <div class="row ">
+            <div *ngFor="let item of imagesSelected"
+              class="col-xs-4 col-sm-3 col-md-3 d-flex align-items-center gy-2 mb-2 item-image" (click)="getProduct($event)">
+              <img class="img-thumbnail " [src]=" item |imagen">
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-5 pt-4 mt-5 d-inline  justify-content-start text-start">
+      <div class="row pt-2">
+        <div class="col-xs-12 co-sm-12 col-md-10">
+          <h3 class="title-product mb-4 text-uppercase">{{ product?.name }}</h3>
+          <h3 class=" product-price mb-4">{{ '$' + product?.price }}</h3>
+          <h4 class="text-start  mb-0 description">Descripción</h4>
+          <p class="text-start mb-3">{{ product?.description }}</p>
+          <h4 class="text-start  mb-1 description">Molienda:</h4>
+          <button class="btn-molido mb-4" mat-fab extended color="primary">
+            <mat-icon class="">blur_linear</mat-icon>
+            Molido
+          </button>
+          <h4 class="text-start  mb-1 description">Peso:</h4>
+          <button class="btn-amount mb-4 " mat-fab extended color="primary">
+            {{ product?.amount }}g
+          </button>
+          <h4 class="text-start  mb-1 description">Cantidad:</h4>
+
+            <div class="input-group  mb-4 " role="group" aria-label="Basic example ">
+              <button type="button" class="btn btn-amount-product" (click)="amountProduct = amountProduct <= 0 ? 0 : amountProduct - 1"><mat-icon>remove</mat-icon></button>
+              <input type="text" class="text-center form-control input-amount-product" [value]="amountProduct">
+              <button type="button dense-3" class="btn btn-amount-product" (click)="amountProduct = amountProduct + 1"><mat-icon>add</mat-icon></button>
+            </div>
+
+          <div class="d-grid gap-2  ">
+            <button mat-raised-button class="btn btn-principal" (click)="addCart()">Agregar al carro <mat-icon>add_shopping_cart</mat-icon></button>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+
+</section>

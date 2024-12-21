@@ -1,0 +1,34 @@
+<form class="form-group" [formGroup]="miFormulario">
+  <div class="row g-2" fxLayoutAlign="space-between center center">
+    <div class="col-xs-10 col-sm-12 col-md-4 ">
+      <button  *ngIf="showButtonAdd" mat-raised-button class="btn-add"  (click)="add()">
+        <mat-icon>add_circle_outline</mat-icon>Crear {{ nameComponent }}
+      </button>
+  <button mat-raised-button class="pdf-button" (click)="downloadPdf()">
+    <mat-icon>cloud_download</mat-icon>Descargar PDF 
+  </button>
+
+    </div>
+    <div class="col-xs-10 col-sm-12 col-md-8  dense-3">
+      <div class="row g-2 justify-content-end ">
+        <mat-form-field *ngIf="showSearchDate" class="col-xs-8 col-sm-12 col-md-5  mat-form-search " appearance="outline">
+          <mat-label>Escoge una fecha</mat-label>
+          <input matInput  class="input-search" [matDatepicker]="picker"
+            formControlName="date" (dateChange)="onChangesSearch()">
+          <mat-datepicker-toggle matIconSuffix [for]="picker" ></mat-datepicker-toggle>
+          <mat-datepicker #picker ></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field *ngIf="showSearchFieldName" class="col-xs-9 col-sm-12 col-md-6  mat-form-search " appearance="outline">
+          <mat-label>Buscar {{ nameComponent }}</mat-label>
+          <input type="text" matInput placeholder="Ingrese el nombre del {{ searchName }}" class="input-search"
+            formControlName="name" (keyup)="onChangesSearch()">
+          <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+</form>
+<div class="table-responsive mt-4">
+  <app-table [showButtonsTable]="showButtonsTableCrud" [useUrl]="true" [data]="dataTable" [propertyColumns]="propertyColumns" [headerColumnsName]="headerColumnsName"
+    [nameComponent]="nameComponent" [valueSearchTable]="miFormulario.get('name')?.value" [pageSizeOptions]="pageSizeOptions"></app-table>
+</div>

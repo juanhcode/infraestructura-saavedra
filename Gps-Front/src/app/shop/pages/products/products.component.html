@@ -1,0 +1,35 @@
+<section class="col-xs-12 col-sm-12 col-md-12 d-grid align-items-center justify-content-center  px-5 mb-5">
+  <h2 class="title text-center mb-0 mt-3">{{ titleComponent }}</h2>
+  <div class="row ">
+    <div class="col-xs-12 col-sm-12 col-md-12 p-4">
+      <div class="row g-5 ">
+        <ng-container *ngFor="let product of products;index as i">
+          <div *ngIf="i < amountComponentsShow" class="col-xs-12 col-sm-12 col-md-4">
+            <mat-card class="p-2 card">
+              <img mat-card-image class="" [src]="product.image" alt="image">
+              <h3 class="mb-0 mt-2">{{ product.name }} </h3>
+              <div
+                class="col-md-12 text-center d-flex align-items-center justify-content-between mt-2 action-product  ">
+                <label for="" class=" form-label text-center price px-3 ">{{ '$'+ product.price }}</label>
+                <div class="d-inline">
+                  <button class="button p-1" mat-icon-button matTooltip="Ver"
+                    aria-label="Example icon-button with a heart icon" (click)="navigateUrl(product.name!,product.id!)">
+                    <mat-icon>
+                      <mat-icon>visibility</mat-icon>
+                    </mat-icon>
+                  </button>
+                </div>
+              </div>
+            </mat-card>
+          </div>
+        </ng-container>
+        <div *ngIf="btnShowMoreProducts" class="col-xs-12 col-sm-12 col-md-12  text-center">
+          <a (click)="navigateUrlProducts()" class="btn btn-principal">Ver más </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+</section>

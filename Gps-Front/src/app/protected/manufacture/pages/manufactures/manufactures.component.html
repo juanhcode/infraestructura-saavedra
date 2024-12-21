@@ -1,0 +1,5 @@
+<app-crud (valueSearch)="onChangesSearchManufacture($event)" [showSearchDate]="true" [showSearchFieldName]="false"
+  [dataTable]="dataSource" [propertyColumns]="propertyManufactures" [nameComponent]="'manufactura'"
+  [headerColumnsName]="listHeaderTableManufactures" [showButtonAdd]="showButtonAddCrud" [showButtonsTableCrud]="showButtonsTableManufacture">
+</app-crud>
+<router-outlet (activate)="onActive($event)"></router-outlet>

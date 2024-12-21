@@ -1,0 +1,177 @@
+<form [formGroup]="miFormulario " class="row">
+  <div class="col-xs-10 col-sm-12 col-md-12 mb-3">
+    <h3 class="mb-0"> Datos del Gasto</h3>
+    <div class="card">
+      <div class="card-body">
+        <div class="row g-4 justify-content-evenly">
+          <div class="col-xs-10 col-sm-12 col-md-4">
+            <div class="row   ">
+              <label for="inputEmail3" class="col-xs-12 col-sm-12 col-form-label">Proveedor</label>
+              <div class="col-xs-12 col-sm-12 mb-3">
+                <input type="text" class="form-control" placeholder="Ingresa el nombre del proveedor"
+                  [matAutocomplete]="autoSuppliers" formControlName="nameSupplier" (input)="searchingSupplier()">
+                <mat-autocomplete autoActiveFirstOption #autoSuppliers="matAutocomplete"
+                  (optionSelected)="optionSelectedSupplier($event)">
+                  <mat-option *ngFor="let supplier of suppliers" [value]="supplier">
+                    {{supplier.name }}
+                  </mat-option>
+                  <mat-option value=""
+                    *ngIf="suppliers.length===0 && miFormulario.get('nameSupplier')?.value?.trim().length > 0">
+                    No se encontro nadacon el temrino {{ miFormulario.get('nameSupplier')?.value }}
+                  </mat-option>
+                </mat-autocomplete>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-10 col-sm-12 col-md-4">
+            <div class="row ">
+              <label for="inputEmail3" class="col-xs-10 col-sm-12 col-form-label">Producto</label>
+              <div class="co-xs-10 col-sm-12 mb-3">
+                <input type="text" class="form-control" placeholder="Ingresa el nombre del producto"
+                  [matAutocomplete]="autoProducts" formControlName="nameProduct" (input)="searchingProducts()">
+                <mat-autocomplete autoActiveFirstOption #autoProducts="matAutocomplete"
+                  (optionSelected)="optionSelectedProduct($event)">
+                  <mat-option *ngFor="let product of products" [value]="product">
+                    {{product.name }}
+                  </mat-option>
+                  <mat-option value=""
+                    *ngIf="products.length===0 && miFormulario.get('nameProduct')?.value?.trim().length > 0">
+                    No se encontro nadacon el temrino {{ miFormulario.get('nameProduct')?.value }}
+                  </mat-option>
+                </mat-autocomplete>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="showComponentsExpeses" class="col-xs-10 col-sm-12 col-md-2 d-flex justify-content-center align-items-center pt-4">
+            <div class="d-flex justify-content-evenly">
+              <button mat-mini-fab matTooltip="Crear proveedor" (click)="getUrlSupplier()" class="me-md-3 btn-supplier"
+                color="accent">
+                <mat-icon>handshake </mat-icon>
+              </button>
+              <button mat-mini-fab matTooltip="Crear producto" (click)="openDialogProduct()" color="accent"
+                class="btn-product">
+                <mat-icon>coffee</mat-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="supplierSelected !== undefined" class="col-xs-10 col-sm-12 col-md-12 mb-3">
+    <h3 class="mb-0"> Datos del Producto</h3>
+    <div class="card">
+      <div class="card-body">
+        <mat-stepper linear #stepper (selectionChange)="changeStep($event)">
+          <mat-step [stepControl]="firstFormGroup" color="accent" label="Selecciona los productos" state="step1">
+            <div class="container">
+              <div class="col-xs-10 col-sm-12 col-md-12 mt-4 mb-4">
+                <app-table [propertyColumns]="propertyProducts" [headerColumnsName]="listHeaderTableProducts"
+                  [data]="dataSourceProducts" [useUrl]="false" [pageSizeOptions]="pageSizeOptions"
+                  [selection]="selectionProducts" (getElementsSelected)="getElementsSelected($event)"></app-table>
+              </div>
+              <div class="col-xs-10 col-sm-12 col-md-12 d-flex flex-column flex-sm-row justify-content-end ">
+                <button mat-raised-button matStepperNext class="btn-step" [disabled]="productsSelected.length < 1">
+                  <mat-icon>keyboard_arrow_right</mat-icon>Siguiente
+                </button>
+              </div>
+            </div>
+          </mat-step>
+          <mat-step [stepControl]="secondFormGroup" color="accent" label="Ingresa la cantidad de cada produco"
+            state="step2">
+            <form [formGroup]="secondFormGroup">
+              <div *ngIf="updateStep2" class="container mt-4 mb-4" [formArrayName]="'formArrayProductsSelected'">
+                <div class="col-xs-10 col-sm-12 col-md-12 mb-4"
+                  *ngFor="let product of productsSelected; let index=index">
+                  <div class="row" [formGroupName]="index">
+                    <div class="col-xs-10 col-sm-12 col-md-3 mb-2">
+                      <label for="inputEmail4" class="form-label">Nombre Producto</label>
+                      <input formControlName="name" type="text" class="form-control" id="{{product.name}}"
+                        value="{{product.name}}">
+                    </div>
+                    <div class="col-xs-10 col-sm-12 col-md-3 mb-2">
+                      <label for="inputEmail4" class="form-label">Cantidad del producto</label>
+                      <input formControlName="amountProduct" type="text" class="form-control" id="{{product.amount}}"
+                        value="{{product.amount}}">
+                    </div>
+                    <div class="col-xs-10 col-sm-12 col-md-3 mb-2">
+                      <label for="inputEmail4" class="form-label">Precio</label>
+                      <input formControlName="price" type="text" class="form-control" id="{{product.price}}"
+                        value="{{product.price}}">
+                    </div>
+                    <div class="col-xs-10 col-sm-12 col-md-3 mb-2">
+                      <label for="inputEmail4" class="form-label">Cantidad Comprada</label>
+                      <input type="number"
+                        [class.is-invalid]="validateField.noValidField('amount',formGroupProduct(index))"
+                        formControlName="amount" value="" class="form-control" id="amount">
+                      <div class="invalid-feedback">
+                        {{ validateField.errorMsgField('amount','La cantidad',formGroupProduct(index))}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-10 col-sm-12 col-md-12 d-flex flex-column flex-sm-row justify-content-between">
+                  <button mat-raised-button matStepperPrevious class="btn my-2 btn-step">
+                    <mat-icon>keyboard_arrow_left</mat-icon>Volver
+                  </button>
+                  <button mat-raised-button matStepperNext class="btn my-2 btn-step" (click)="addDetailExpense()"
+                    [disabled]="this.secondFormGroup.get('formArrayProductsSelected')?.invalid">
+                    <mat-icon>add_box</mat-icon>Agregar
+                  </button>
+                </div>
+              </div>
+            </form>
+          </mat-step>
+        </mat-stepper>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-12 col-sm-12 col-md-12 mb-4">
+    <h3 class="mb-0"> Datos del Detalle del Gasto</h3>
+    <div class="card">
+      <div class="card-body">
+        <app-table (action)="actionDetailExpense($event)" [propertyColumns]="propertyDetailsExpenses"
+          [headerColumnsName]="listHeaderTableDetailExpenses" [data]="dataSourceDetailsExpense" [useUrl]="false"
+          [pageSizeOptions]="pageSizeOptionsDetails" [showButtonsTable]="showButtonTable">
+        </app-table>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-12 col-sm-12 col-md-12 mb-4">
+    <div class="card">
+      <div class="card-body">
+        <div class="row g-4 justify-content-end ">
+          <div class="col-xs-12 col-sm-12 col-md-4">
+            <div class="row mb-1 mt-1 ms-0 me-0">
+              <label for="inputEmail3" class="col-sm-3 col-form-label">Fecha</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" formControlName="date">
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-4">
+            <div class="row mb-1 mt-1 ms-0 me-0">
+              <label for="inputEmail3" class="col-sm-5 col-form-label">Total Precio</label>
+              <div class="col-sm-7">
+                <input type="text" class="form-control" formControlName="total_price">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="showComponents" fxLayout
+    class="col-xs-12 col-sm-12 col-md-12 d-flex flex-column flex-sm-row justify-content-between">
+    <button mat-raised-button color="accent" class="btn my-2" [ngClass]="viewName" (click)="save()"
+      [disabled]="miFormulario.invalid  || details_expense.length < 1">
+      <mat-icon>save</mat-icon>
+      {{ viewName | NameButton }}
+    </button>
+    <button mat-raised-button color="warn" class="btn my-2" (click)="cancel()">
+      <mat-icon>highlight_off</mat-icon>
+      Cancelar
+    </button>
+  </div>
+</form>
+

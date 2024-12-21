@@ -1,0 +1,42 @@
+
+<div class="container mt-5 mb-5">
+  <form class="form" (ngSubmit)="login()" [formGroup]="miFormulario">
+    <div class="form-title">
+      <img src="assets/logo_cafe_rosita.png" style="width: 210px; height: 90px;">
+    </div>
+    <div class="form-container">
+      <div class="form-group">
+        <input type="text" class="form-input" formControlName="email" placeholder="Ingrese el correo">
+        <span class="form-line" [ngClass]="{'invalid-line': noValidField('email')}"></span>
+        <small *ngIf="noValidField('email')" class="text-danger">{{ errorMsgField('email','El correo') }}</small>
+      </div>
+      <div class="form-group">
+        <div class="password">
+          <input [type]="hideConfirmPassword ?'password':'text'" class="form-input" formControlName="password" [class.is-invalid]="noValidField('password')"
+            placeholder="Ingrese la contraseña">
+            <mat-icon *ngIf="!validateField.noValidField('confirmPassword',miFormulario)" class="icon-password"
+              (click)="hideConfirmPassword = !hideConfirmPassword" [attr.aria-pressed]="hideConfirmPassword">
+              {{!hideConfirmPassword ? 'visibility_off' : 'visibility'}}
+            </mat-icon>
+        </div>
+        <span class="form-line" [ngClass]="{'invalid-line': noValidField('password')}"></span>
+        <small *ngIf="noValidField('password')" class="text-danger">{{ errorMsgField('password','La contraseña')
+          }}</small>
+      </div>
+<!-- Botón de "Iniciar sesión con Google" -->
+
+<button type="button" class="google-btn" (click)="loginWithGoogle()">
+  <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google Logo">
+  Iniciar sesión con Google
+</button>
+
+
+        <a href="auth/registro" class="form-link">¿Olvidaste tu contraseña?</a>
+
+
+      <button type="submit" class="form-submit">Login</button>
+      <label class="form-paragraph">¿No tienes una cuenta? <a class="form-link"
+          href="auth/registro">Registrarse</a></label>
+    </div>
+  </form>
+</div>

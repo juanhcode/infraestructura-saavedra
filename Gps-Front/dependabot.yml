@@ -1,0 +1,12 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/" # Ruta donde se encuentra el archivo package.json
+    schedule:
+      interval: "weekly" # Frecuencia con la que se revisarán las dependencias
+    commit-message:
+      prefix: "fix" # Prefijo del mensaje de confirmación
+    open-pull-requests-limit: 5 # Límite de PRs abiertos a la vez
+    ignore:
+      - dependency-name: "typescript" # Ignora las actualizaciones de TypeScriptt
+        versions: [">=4.0.0"] # Ignorar todas las versiones de TypeScript que sean >= 4.0.0

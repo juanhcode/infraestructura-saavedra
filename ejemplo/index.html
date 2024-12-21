@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch de Portafolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        #response {
+            white-space: pre-wrap;
+            background-color: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Fetch de Portafolio</h1>
+    <button id="fetchButton">Obtener Datos</button>
+    <h2>Respuesta:</h2>
+    <div id="response">Haz clic en el botón para obtener los datos.</div>
+
+    <script>
+        document.getElementById('fetchButton').addEventListener('click', async () => {
+            const responseElement = document.getElementById('response');
+            responseElement.textContent = 'Cargando...';
+
+            try {
+                const response = await fetch('http://35.192.180.100:8082/portfolios/users/1');
+                if (!response.ok) {
+                    throw new Error(`Error en la solicitud: ${response.status} ${response.statusText}`);
+                }
+
+                const data = await response.json();
+                responseElement.textContent = JSON.stringify(data, null, 2);
+            } catch (error) {
+                responseElement.textContent = `Error: ${error.message}`;
+            }
+        });
+    </script>
+</body>
+
+</html>
