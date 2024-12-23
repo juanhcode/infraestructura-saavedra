@@ -1,0 +1,4 @@
+doctl kubernetes cluster create saavedra-cluster --region nyc1 --node-pool "name=default;size=s-1vcpu-2gb;count=3"
+
+
+doctl kubernetes cluster kubeconfig save saavedra-cluster

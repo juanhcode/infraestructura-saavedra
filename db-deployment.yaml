@@ -33,6 +33,13 @@ spec:
           ports:
             - containerPort: 3306
               protocol: TCP
+          resources:
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+            requests:
+              memory: "256Mi"
+              cpu: "250m"
           volumeMounts:
             - mountPath: /var/lib/mysql
               name: db-data
