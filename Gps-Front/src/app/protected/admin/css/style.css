@@ -1,0 +1,109 @@
+.example-card {
+  max-width: 490px;
+}
+
+.image-sale{
+  height: auto;
+  max-height: 320px;
+}
+
+.form-label{
+  color:#444346;
+  font-size:15px;
+  font-weight:450;
+  }
+
+.col-form-label{
+  color:#444346;
+  font-size:15px;
+  font-weight:450;
+}
+
+::ng-deep .mat-step-header {
+  pointer-events: none !important;
+}
+  .password{
+    display:inline-block;
+    position:relative;
+    width: 100%;
+  }
+
+  .icon-password{
+    position:absolute;
+    top:6px;
+    right:15px;
+    cursor:pointer;
+  }
+
+  textarea{
+    resize:none;
+  }
+
+
+h3{
+  color:#444346;
+  font-size:16px;
+  font-weight:450;
+}
+
+.btn-add-product{
+background-color:#546E7A;
+color:white;
+}
+
+.update{
+  background:#673AB7;
+  color:white;
+}
+
+.update-chart{
+  background:#90A4AE;
+  color:white;
+}
+
+.statistic-image{
+  width:65%;
+  height:65%;
+}
+.create{
+  background:#3F51B5;
+  color:white;
+}
+
+.btn-step{
+  background-color:#546E7A;
+  color: white;
+}
+
+.btn-product{
+  background-color:#546E7A;
+  color: white;
+}
+
+.btn-supplier{
+  background-color:#546E7A;
+  color: white;
+}
+
+.card-image{
+  background-color:#f8f8f8;
+}
+
+.card-images{
+  background-color:#f8f8f8;
+}
+
+
+.mat-stepper-horizontal {
+  margin-top: 8px;
+}
+
+.mat-mdc-form-field {
+  margin-top: 16px;
+}
+
+.imgUser{
+  max-width: 18rem;
+  max-height: 18rem;
+}
+

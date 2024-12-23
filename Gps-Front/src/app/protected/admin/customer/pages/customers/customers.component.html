@@ -1,0 +1,5 @@
+
+<app-crud (valueSearch)="onChangesSearchCustomer($event)" [showSearchDate]="false" [dataTable]="dataSource" [propertyColumns]="propertyCustomers"
+  [nameComponent]="'cliente'" [headerColumnsName]="listHeaderTableCustomers" [searchName]="'cliente'" >
+</app-crud>
+<router-outlet (activate)="onActive($event)"></router-outlet>

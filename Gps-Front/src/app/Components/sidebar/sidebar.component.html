@@ -1,0 +1,17 @@
+<aside class="sidebar" id="sidebar" [ngClass]="{'sidebar-open':menuStatus}">
+  <div class="logo_details">
+    <div class="logotype"><img class="logo" src="../../../assets/logo/logo.png"  ></div>
+    <i class="fa-solid fa-bars" id="btn"  (click)="sideNavToggle()"></i>
+  </div>
+  <ul class="nav-list">
+    <li *ngFor="let item of items">
+      <a *ngIf="item.acessRole=== user.rol || item.name === 'manufactura'" (click)="sendUrl(item.name)">
+        <i class="{{ item.icon }}"></i>
+        <span class="link_name">{{ item.name }}</span>
+      </a>
+      <span class="tooltip">{{ item.name }}</span>
+    </li>
+  </ul>
+</aside>
+
+

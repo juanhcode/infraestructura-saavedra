@@ -1,0 +1,38 @@
+<div class="row g-3">
+  <div class="col-xs-12 col-sm-12 col-md-12">
+    <div  class="row g-4" >
+      <div class="col-md-3">
+        <div class="row mb-3">
+          <label for="formGroupExampleInput" class="form-label">Selecciona la fecha inicial</label>
+          <mat-form-field class="dense-3">
+            <input matInput [matDatepicker]="dp1"  placeholder="Month and Year" [formControl]="minDate">
+            <mat-datepicker-toggle matSuffix [for]="dp1"></mat-datepicker-toggle>
+            <mat-datepicker #dp1 [startView]="'multi-year'" (yearSelected)="main.chosenYearHandler(minDate,$event)"
+              (monthSelected)="main.chosenMonthHandler(minDate,$event, dp1)" panelClass="example-month-picker">
+            </mat-datepicker>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="row mb-3">
+          <label for="formGroupExampleInput" class="form-label">Selecciona la fecha Final</label>
+          <mat-form-field class="dense-3">
+            <input matInput [matDatepicker]="dp2"  placeholder="Mes y Año" [formControl]="maxDate">
+            <mat-datepicker-toggle matSuffix [for]="dp2"></mat-datepicker-toggle>
+            <mat-datepicker #dp2 [startView]="'multi-year'" (yearSelected)="main.chosenYearHandler(maxDate,$event)"
+              (monthSelected)="main.chosenMonthHandler(maxDate,$event, dp2)" panelClass="example-month-picker">
+            </mat-datepicker>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-md-3 d-flex align-items-center pt-2">
+        <button mat-raised-button class="btn update" (click)="search()">Calcular</button>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12">
+    <canvas *ngIf="showCanvas" baseChart width="1100" height="400" [type]="'line'" [data]="lineChartData" [options]="lineChartOptions"
+      [legend]="lineChartLegend" >
+    </canvas>
+  </div>
+</div>

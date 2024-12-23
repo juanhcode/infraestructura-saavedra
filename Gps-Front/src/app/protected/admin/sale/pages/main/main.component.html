@@ -1,0 +1,31 @@
+
+    <div class="row  mt-4 justify-content-center saleMain">
+      <div class="col-xs-12 col-sm-12 col-md-6 mb-3">
+        <div class="row justify-content-center">
+          <mat-card class="example-card " >
+            <mat-card-header class="justify-content-center">
+              <mat-card-title >Ventas</mat-card-title>
+            </mat-card-header>
+            <img mat-card-image class="image-sale" src="assets/sale.jpg"
+              >
+            <mat-card-actions  class="d-grid gap-2 col-6 mx-auto">
+              <button (click)="redirectKindOfSale('todas')" mat-raised-button class="mt-2 mb-2">Ingresar</button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-6 mb-3">
+        <div class="row justify-content-center">
+          <mat-card class="example-card">
+            <mat-card-header  class="justify-content-center">
+              <mat-card-title>Ventas pendientes</mat-card-title>
+            </mat-card-header>
+            <img mat-card-image class="image-sale" src="assets/pending_sale.jpg">
+            <mat-card-actions class="d-grid gap-2 col-6 mx-auto ">
+              <button (click)="redirectKindOfSale('pendientes')" mat-raised-button class="mt-2 mb-2">Ingresar</button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+

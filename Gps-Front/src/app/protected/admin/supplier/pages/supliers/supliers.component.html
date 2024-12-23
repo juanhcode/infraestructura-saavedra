@@ -1,0 +1,5 @@
+<app-crud (valueSearch)="onChangesSearchSupplier($event)" [showSearchDate]="false" [dataTable]="dataSource"
+  [propertyColumns]="propertySuppliers" [nameComponent]="'proveedor'" [headerColumnsName]="listHeaderTableSuppliers"
+  [searchName]="'proveedor'">
+</app-crud>
+<router-outlet (activate)="onActive($event)"></router-outlet>

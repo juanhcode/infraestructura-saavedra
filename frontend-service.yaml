@@ -8,6 +8,7 @@ metadata:
     io.kompose.service: frontend
   name: frontend
 spec:
+  type: LoadBalancer
   ports:
     - name: "4200"
       port: 4200

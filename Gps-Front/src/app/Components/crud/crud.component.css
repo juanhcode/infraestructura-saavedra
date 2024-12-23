@@ -1,0 +1,56 @@
+.input-search:focus {
+  box-shadow: none;
+  border: 1px solid rgb(145, 80, 64);
+}
+
+::ng-deep .btn-add {
+  background-color: #faf2ef;
+  background-image: radial-gradient(#f8f6f5 0.5px, transparent 0.5px),
+    radial-gradient(#f8f6f5 0.5px, #f8f6f5 0.5px);
+}
+.pdf-button {
+  background-color: #faf2ef;
+  background-image: radial-gradient(#f8f6f5 0.5px, transparent 0.5px),
+    radial-gradient(#f8f6f5 0.5px, #d67b75e1 0.5px);
+  margin-left: 10px;
+}
+table {
+  width: 100%;
+}
+
+.mat-form-search {
+  margin: 16px 0px -20px;
+}
+
+th.mat-header-cell {
+  font-size: 1em;
+}
+
+th,
+td {
+  overflow: hidden;
+  width: 200px;
+  min-width: 20px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.input-search {
+  margin: 3px 0px 0px;
+}
+.paginator {
+  background-color: white;
+  font-size: 14px;
+  color: black;
+  font-weight: 2px;
+}
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}

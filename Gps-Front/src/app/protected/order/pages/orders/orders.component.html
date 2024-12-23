@@ -1,0 +1,5 @@
+<app-crud (valueSearch)="onChangesSearchOrder($event)" [showSearchDate]="true" [showSearchFieldName]="false"
+  [dataTable]="dataSource" [propertyColumns]="propertyOrders" [nameComponent]="'pedidos'"
+  [headerColumnsName]="listHeaderTableOrders" [showButtonAdd]="false" [showButtonsTableCrud]="showButtonsTableOrder">
+</app-crud>
+<router-outlet (activate)="onActive($event)"></router-outlet>

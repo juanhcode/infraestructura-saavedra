@@ -1,0 +1,61 @@
+<div class="container mt-5 mb-5">
+  <form class="form" [formGroup]="miFormulario" (ngSubmit)="registrar()">
+    <div class="form-title">
+      <img src="assets/logo_cafe_rosita.png" style="width: 210px; height: 90px;">
+    </div>
+    <div class="form-container">
+      <div class="form-group">
+        <input type="text" class="form-input" formControlName="name" [class.is-invalid]="noValidField('name')"
+          placeholder="Ingrese el nombre">
+          <span class="form-line" [ngClass]="{'invalid-line': noValidField('name')}"></span>
+        <span *ngIf="noValidField('name')" class="text-danger">{{ errorMsgField('name','El nombre') }}</span>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-input" formControlName="surname" [class.is-invalid]="noValidField('surname')"
+          placeholder="Ingrese el apellido">
+          <span class="form-line" [ngClass]="{'invalid-line': noValidField('surname')}"></span>
+        <span *ngIf="noValidField('surname')" class="text-danger">{{ errorMsgField('surname','El apellido') }}</span>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-input" formControlName="adress" [class.is-invalid]="noValidField('adress')"
+          placeholder=" Ingrese la dirección">
+          <span class="form-line" [ngClass]="{'invalid-line': noValidField('adress')}"></span>
+        <span *ngIf="noValidField('adress')" class="text-danger">{{ errorMsgField('adress','La dirección') }}</span>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-input" formControlName="phoneNumber"
+          [class.is-invalid]="noValidField('phoneNumber')" placeholder="Ingrese el telefono">
+          <span class="form-line" [ngClass]="{'invalid-line': noValidField('phoneNumber')}"></span>
+        <span *ngIf="noValidField('phoneNumber')" class="text-danger">{{ errorMsgField('phoneNumber','El numero de
+          telefono') }}</span>
+      </div>
+      <div class="form-group exception">
+        <input type="text" class="form-input" formControlName="email" [class.is-invalid]="noValidField('email')"
+          placeholder=" Ingrese el correo electronico">
+          <span class="form-line" [ngClass]="{'invalid-line': noValidField('email')}"></span>
+        <span *ngIf="noValidField('email')" class="text-danger">{{ errorMsgField('email','El correo') }}</span>
+      </div>
+        <div class="form-group">
+          <input type="password" class="form-input" formControlName="password"
+            [class.is-invalid]="noValidField('password')" placeholder="Ingrese la contraseña">
+            <span class="form-line" [ngClass]="{'invalid-line': noValidField('email')}"></span>
+          <span *ngIf="noValidField('password')" class="text-danger">{{ errorMsgField('password','La contraseña')
+            }}</span>
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-input" formControlName="confirmPassword"
+            [class.is-invalid]=" noValidField('confirmPassword')" placeholder="Confirmar contraseña">
+            <span class="form-line" [ngClass]="{'invalid-line': noValidField('email')}"></span>
+          <span *ngIf=" noValidField('confirmPassword')" class="text-danger">{{ errorMsgField('confirmPassword',
+            'La Confirmación de contraseña') }}</span>
+        </div>
+  
+      <div class="form-group exception">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1" (click)="openTermsModal()">
+          <label class="form-check-label" for="exampleCheck1">Aceptar condiciones y restricciones</label>
+      </div>
+        <button type="submit" class="form-submit exception" [disabled]="miFormulario.invalid">Registrarse</button>
+  
+    </div>
+  </form>
+</div>
