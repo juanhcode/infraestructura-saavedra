@@ -24,16 +24,16 @@ spec:
         - env:
             - name: NODE_ENV
               value: development
-          image: sebastian2313025/infraestructura-saavedra:frontend
+          image: danyel3096/infra-para-dist:angular-dev
           name: frontend
           ports:
             - containerPort: 4200
               protocol: TCP
           resources:
             limits:
-              memory: "512Mi"
-              cpu: "500m"
+              memory: "128Mi"
+              cpu: "100m"
             requests:
-              memory: "256Mi"
-              cpu: "250m"
+              memory: "128Mi"
+              cpu: "100m"
       restartPolicy: Always

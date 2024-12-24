@@ -1,4 +1,8 @@
 doctl kubernetes cluster create saavedra-cluster --region nyc1 --node-pool "name=default;size=s-1vcpu-2gb;count=3"
 
-
+//contexto
 doctl kubernetes cluster kubeconfig save saavedra-cluster
+
+
+//mandar manifiestos de k8s
+kubectl apply -

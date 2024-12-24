@@ -10,18 +10,18 @@ until nc -z "$host" 3306; do
   sleep 2
 done
 
-# Asegurarse de que las dependencias estén instaladas
-echo "Instalando dependencias..."
-npm install
+# # Asegurarse de que las dependencias estén instaladas
+# echo "Instalando dependencias..."
+# npm install
 
 
-# Ejecutar las migraciones
-echo "Ejecutando migraciones..."
-npx sequelize db:migrate
+# # Ejecutar las migraciones
+# echo "Ejecutando migraciones..."
+# npx sequelize db:migrate
 
-# Ejecutar los seeders
-echo "Ejecutando seeders..."
-npx sequelize db:seed:all
+# # Ejecutar los seeders
+# echo "Ejecutando seeders..."
+# npx sequelize db:seed:all
 
 # Iniciar la aplicación
 echo "Iniciando la aplicación..."
